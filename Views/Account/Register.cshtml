@@ -1,0 +1,54 @@
+﻿@model UserApp.Models.VM.VMRegister
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "row justify-content-center" }))
+{
+
+
+<div class="col-md-6 mt-3">
+    @if (ViewBag.RegisterError != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.RegisterError
+        </div>
+    }
+    @if (ViewBag.RegisterSuccess != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @ViewBag.RegisterSuccess
+        </div>
+    }
+
+    <div class="row">
+        <div class="mb-3 col-md-6">
+            @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3 col-md-6">
+            @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.RePassword, new { @class = "form-label" })
+        @Html.PasswordFor(m => m.RePassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.RePassword, "", new { @class = "text-danger" })
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+}
